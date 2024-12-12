@@ -91,12 +91,12 @@ const ProductScreen = () => {
                 <ListGroup.Item>
                   <Rating
                     value={product.rating}
-                    text={`${product.numReviews} reviews`}
+                    text={`${product.numReviews} Avaliações`}
                   />
                 </ListGroup.Item>
-                <ListGroup.Item>Price: ${product.price}</ListGroup.Item>
+                <ListGroup.Item>Preço: {product?.price?.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</ListGroup.Item>
                 <ListGroup.Item>
-                  Description: {product.description}
+                  Descrição: {product.description}
                 </ListGroup.Item>
               </ListGroup>
             </Col>
@@ -107,7 +107,7 @@ const ProductScreen = () => {
                     <Row>
                       <Col>Preço:</Col>
                       <Col>
-                        <strong>${product.price}</strong>
+                        <strong>{product?.price?.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</strong>
                       </Col>
                     </Row>
                   </ListGroup.Item>
@@ -115,7 +115,7 @@ const ProductScreen = () => {
                     <Row>
                       <Col>Status:</Col>
                       <Col>
-                        {product.countInStock > 0 ? 'In Stock' : 'Out Of Stock'}
+                        {product.countInStock > 0 ? 'Em estoque' : 'Não tem em estoque'}
                       </Col>
                     </Row>
                   </ListGroup.Item>
@@ -123,7 +123,7 @@ const ProductScreen = () => {
                   {product.countInStock > 0 && (
                     <ListGroup.Item>
                       <Row>
-                        <Col>Qty</Col>
+                        <Col>Quantidade</Col>
                         <Col>
                           <Form.Control
                             as='select'
@@ -150,14 +150,14 @@ const ProductScreen = () => {
                       disabled={product.countInStock === 0}
                       onClick={addToCartHandler}
                     >
-                      Add To Cart
+                      Adicionar ao carrinho
                     </Button>
                   </ListGroup.Item>
                 </ListGroup>
               </Card>
             </Col>
           </Row>
-          <Row className='review'>
+          {/* <Row className='review'>
             <Col md={6}>
               <h2>Avaliação</h2>
               {product.reviews.length === 0 && <Message>Sem Reviews</Message>}
@@ -170,7 +170,7 @@ const ProductScreen = () => {
                     <p>{review.comment}</p>
                   </ListGroup.Item>
                 ))}
-                <ListGroup.Item>
+               <ListGroup.Item>
                   <h2>Escreva uma avaliação do cliente</h2>
 
                   {loadingProductReview && <Loader />}
@@ -219,7 +219,7 @@ const ProductScreen = () => {
                 </ListGroup.Item>
               </ListGroup>
             </Col>
-          </Row>
+          </Row> */}
         </>
       )}
     </>
