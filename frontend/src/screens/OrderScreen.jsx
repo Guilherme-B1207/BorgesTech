@@ -130,7 +130,7 @@ const OrderScreen = () => {
             <ListGroup.Item>
               <h2>Método de Pagamento</h2>
               <p>
-                <strong>Method: </strong>
+                <strong>Método: </strong>
                 {order.paymentMethod}
               </p>
               {order.isPaid ? (

@@ -94,7 +94,7 @@ const ProductScreen = () => {
                     text={`${product.numReviews} Avaliações`}
                   />
                 </ListGroup.Item>
-                <ListGroup.Item>Preço: {product?.price?.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</ListGroup.Item>
+                <ListGroup.Item>Preço: {product?.price?.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</ListGroup.Item>
                 <ListGroup.Item>
                   Descrição: {product.description}
                 </ListGroup.Item>
@@ -107,7 +107,7 @@ const ProductScreen = () => {
                     <Row>
                       <Col>Preço:</Col>
                       <Col>
-                        <strong>{product?.price?.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</strong>
+                        <strong>{product?.price?.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</strong>
                       </Col>
                     </Row>
                   </ListGroup.Item>
@@ -157,7 +157,7 @@ const ProductScreen = () => {
               </Card>
             </Col>
           </Row>
-          {/* <Row className='review'>
+          <Row className='review'>
             <Col md={6}>
               <h2>Avaliação</h2>
               {product.reviews.length === 0 && <Message>Sem Reviews</Message>}
@@ -170,7 +170,7 @@ const ProductScreen = () => {
                     <p>{review.comment}</p>
                   </ListGroup.Item>
                 ))}
-               <ListGroup.Item>
+                <ListGroup.Item>
                   <h2>Escreva uma avaliação do cliente</h2>
 
                   {loadingProductReview && <Loader />}
@@ -219,7 +219,7 @@ const ProductScreen = () => {
                 </ListGroup.Item>
               </ListGroup>
             </Col>
-          </Row> */}
+          </Row>
         </>
       )}
     </>

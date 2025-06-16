@@ -39,7 +39,7 @@ const Header = () => {
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
           <Navbar.Collapse id='basic-navbar-nav'>
             <Nav className='ms-auto'>
-              {/* <SearchBox /> */}
+              <SearchBox />
               <Nav.Link as={Link} to='/cart'>
                 <FaShoppingCart /> Carrinho
                 {cartItems.length > 0 && (
@@ -51,9 +51,9 @@ const Header = () => {
               {userInfo ? (
                 <>
                   <NavDropdown title={userInfo.name} id='username'>
-                    {/* <NavDropdown.Item as={Link} to='/profile'>
+                    <NavDropdown.Item as={Link} to='/profile'>
                       Perfil
-                    </NavDropdown.Item> */}
+                    </NavDropdown.Item>
                     <NavDropdown.Item onClick={logoutHandler}>
                       Sair
                     </NavDropdown.Item>
@@ -70,12 +70,12 @@ const Header = () => {
                   <NavDropdown.Item as={Link} to='/admin/productlist'>
                     Produtos
                   </NavDropdown.Item>
-                  {/* <NavDropdown.Item as={Link} to='/admin/orderlist'>
+                  <NavDropdown.Item as={Link} to='/admin/orderlist'>
                     Pedidos
                   </NavDropdown.Item>
                   <NavDropdown.Item as={Link} to='/admin/userlist'>
                     Usuários
-                  </NavDropdown.Item> */}
+                  </NavDropdown.Item>
                 </NavDropdown>
               )}
             </Nav>
@@ -85,5 +85,5 @@ const Header = () => {
     </header>
   );
 };
- 
+
 export default Header;

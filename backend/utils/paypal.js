@@ -11,7 +11,6 @@ const { PAYPAL_CLIENT_ID, PAYPAL_APP_SECRET, PAYPAL_API_URL } = process.env;
  *
  */
 async function getPayPalAccessToken() {
-  // Authorization header requires base64 encoding
   const auth = Buffer.from(PAYPAL_CLIENT_ID + ':' + PAYPAL_APP_SECRET).toString(
     'base64'
   );
@@ -49,12 +48,10 @@ async function getPayPalAccessToken() {
  */
 export async function checkIfNewTransaction(orderModel, paypalTransactionId) {
   try {
-    // Find all documents where Order.paymentResult.id is the same as the id passed paypalTransactionId
     const orders = await orderModel.find({
       'paymentResult.id': paypalTransactionId,
     });
 
-    // If there are no such orders, then it's a new transaction.
     return orders.length === 0;
   } catch (err) {
     console.error(err);
