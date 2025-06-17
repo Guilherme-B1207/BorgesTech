@@ -7,11 +7,11 @@ const getProducts = asyncHandler(async (req, res) => {
 
   const keyword = req.query.keyword
     ? {
-        name: {
-          $regex: req.query.keyword,
-          $options: 'i',
-        },
-      }
+      name: {
+        $regex: req.query.keyword,
+        $options: 'i',
+      },
+    }
     : {};
 
   const count = await Product.countDocuments({ ...keyword });
@@ -29,7 +29,7 @@ const getProductById = asyncHandler(async (req, res) => {
     return res.json(product);
   } else {
     res.status(404);
-    throw new Error('Product not found');
+    throw new Error('Produto não encontrado');
   }
 });
 
@@ -69,7 +69,7 @@ const updateProduct = asyncHandler(async (req, res) => {
     res.json(updatedProduct);
   } else {
     res.status(404);
-    throw new Error('Product not found');
+    throw new Error('Produto não encontrado');
   }
 });
 
@@ -78,10 +78,10 @@ const deleteProduct = asyncHandler(async (req, res) => {
 
   if (product) {
     await Product.deleteOne({ _id: product._id });
-    res.json({ message: 'Product removed' });
+    res.json({ message: 'Produto Removido' });
   } else {
     res.status(404);
-    throw new Error('Product not found');
+    throw new Error('Produto não encontrado');
   }
 });
 
@@ -97,7 +97,7 @@ const createProductReview = asyncHandler(async (req, res) => {
 
     if (alreadyReviewed) {
       res.status(400);
-      throw new Error('Product already reviewed');
+      throw new Error('Produto já avaliado!');
     }
 
     const review = {
@@ -116,10 +116,10 @@ const createProductReview = asyncHandler(async (req, res) => {
       product.reviews.length;
 
     await product.save();
-    res.status(201).json({ message: 'Review added' });
+    res.status(201).json({ message: 'Review adicionada' });
   } else {
     res.status(404);
-    throw new Error('Product not found');
+    throw new Error('Produto não encontrado');
   }
 });
 

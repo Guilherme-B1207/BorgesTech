@@ -9,7 +9,7 @@ const addOrderItems = asyncHandler(async (req, res) => {
 
   if (orderItems && orderItems.length === 0) {
     res.status(400);
-    throw new Error('No order items');
+    throw new Error('Sem pedidos');
   } else {
 
     const itemsFromDB = await Product.find({
@@ -64,24 +64,24 @@ const getOrderById = asyncHandler(async (req, res) => {
     res.json(order);
   } else {
     res.status(404);
-    throw new Error('Order not found');
+    throw new Error('Produto não encontrado');
   }
 });
 
 const updateOrderToPaid = asyncHandler(async (req, res) => {
 
   const { verified, value } = await verifyPayPalPayment(req.body.id);
-  if (!verified) throw new Error('Payment not verified');
+  if (!verified) throw new Error('Pagamento não verificado');
 
   const isNewTransaction = await checkIfNewTransaction(Order, req.body.id);
-  if (!isNewTransaction) throw new Error('Transaction has been used before');
+  if (!isNewTransaction) throw new Error('Transação já feita');
 
   const order = await Order.findById(req.params.id);
 
   if (order) {
 
     const paidCorrectAmount = order.totalPrice.toString() === value;
-    if (!paidCorrectAmount) throw new Error('Incorrect amount paid');
+    if (!paidCorrectAmount) throw new Error('Pagamento insuficiente');
 
     order.isPaid = true;
     order.paidAt = Date.now();
@@ -97,7 +97,7 @@ const updateOrderToPaid = asyncHandler(async (req, res) => {
     res.json(updatedOrder);
   } else {
     res.status(404);
-    throw new Error('Order not found');
+    throw new Error('Pedido não encontrado');
   }
 });
 
@@ -113,7 +113,7 @@ const updateOrderToDelivered = asyncHandler(async (req, res) => {
     res.json(updatedOrder);
   } else {
     res.status(404);
-    throw new Error('Order not found');
+    throw new Error('Pedido não encontrado');
   }
 });
 
