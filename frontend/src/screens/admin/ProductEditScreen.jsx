@@ -198,9 +198,6 @@ const ProductEditScreen = () => {
         </Row>
       )}
 
-      <footer className="mt-4 text-center text-muted small">
-        BorgesTech © {new Date().getFullYear()}
-      </footer>
     </Container>
   );
 };
