@@ -35,20 +35,21 @@ const getProductById = asyncHandler(async (req, res) => {
 
 const createProduct = asyncHandler(async (req, res) => {
   const product = new Product({
-    name: 'Nome da Amostra',
+    name: ' ',
     price: 0,
     user: req.user._id,
-    image: '/images/sample.jpg',
-    brand: 'Marca de amostra',
-    category: 'Categoria da amostra',
+    image: ' ',
+    brand: ' ',
+    category: ' ',
     countInStock: 0,
     numReviews: 0,
-    description: 'Descrição da amostra',
+    description: ' ',
   });
 
   const createdProduct = await product.save();
   res.status(201).json(createdProduct);
 });
+
 
 const updateProduct = asyncHandler(async (req, res) => {
   const { name, price, description, image, brand, category, countInStock } =

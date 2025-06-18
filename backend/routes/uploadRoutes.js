@@ -26,7 +26,7 @@ function fileFilter(req, file, cb) {
   if (extname && mimetype) {
     cb(null, true);
   } else {
-    cb(new Error('Images only!'), false);
+    cb(new Error('Somente imagens!'), false);
   }
 }
 
@@ -40,7 +40,7 @@ router.post('/', (req, res) => {
     }
 
     res.status(200).send({
-      message: 'Image uploaded successfully',
+      message: 'Imagem anexada com sucesso',
       image: `/${req.file.path}`,
     });
   });
